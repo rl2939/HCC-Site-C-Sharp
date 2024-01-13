@@ -1,0 +1,73 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Dan about */
+.about{
+    padding: 2.5%;
+    margin: 4.5%;
+    border: solid 5px orange;
+    text-align: center;
+}
+
+.person{
+    min-height: 260px;
+    width: 200px;
+    display: inline-table; 
+}
+
+.person > img {
+    max-height: 200px;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.center-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.class-popup {
+    position: relative;
+    top: 20%;
+    background: #FFFFFF;
+    padding: 30px;
+    width: auto;
+    max-width: 700px;
+    margin: 15px auto;
+}
+
+.card {
+    border: solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: orange;
+}
+
+.card > a {
+    color: black;
+}
+

@@ -1,0 +1,171 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model iSchoolWebApp.Models.PeopleModel
+@{
+    ViewData["Title"] = @Model.pageTitle;
+}
+
+<h1>@Model.title</h1>
+<div>@Model.subTitle</div>
+
+<div id="allPeople" style="display:none">
+    <!--
+    <h1>examples:</h1>
+    <div id="testTab">
+        <ul>
+            <li><a href="#one">First</a></li>
+            <li><a href="#two">Second</a></li>
+            <li><a href="#three">Third</a></li>
+        </ul>
+        <div id="one">
+            Some text for the first one!
+        </div>
+        <div id="two">
+            Some text for the second one!
+        </div>
+        <div id="three">
+            Some text for the third one!
+        </div>
+    </div>
+
+    <hr/>
+    <div id="testAcc">
+        <h3>title</h3>
+        <div>text....</div>
+        <h3>title</h3>
+        <div>text....</div>
+        <h3>title</h3>
+        <div>text....</div>
+    </div>
+    -->
+    <hr/>
+    <div id="pepTab">
+        <ul>
+            <li><a href="#facAcc">Faculty</a></li>
+            <li><a href="#staffAcc">Staff</a></li>
+        </ul>
+        <div id="facAcc">
+            <h2>Faculty</h2>
+            <!-- This next section is incomplete, add the rest of the items-->
+            @foreach (var faculty in Model.faculty)
+            {
+                <div class="person">
+                    <img src="@faculty.imagePath" alt="pic" />
+                    <h3 style="font-size:small">
+                        @faculty.name
+                    </h3>
+                    <h3 style="font-size:small">
+                        @faculty.username
+                    </h3>
+                    @if (faculty.tagline != "")
+                    {
+                        <h3 style="font-size:small">
+                            @faculty.tagline
+                        </h3>   
+                    }
+                    <h3 style="font-size:small">
+                        @faculty.title
+                    </h3>
+                    <h3 style="font-size:small">
+                        @faculty.interestArea
+                    </h3>
+                    <h3 style="font-size:small">
+                        @faculty.office
+                    </h3>
+                    @if (faculty.website != "")
+                    {
+                        <h3 style="font-size:small">
+                            Webiste: @faculty.website
+                        </h3>
+                    }
+                    @if (faculty.phone != "")
+                    {
+                        <h3 style="font-size:small">
+                            Phone: @faculty.phone
+                        </h3> 
+                    }
+                    @if (faculty.email != "")
+                    {
+                    <h3 style="font-size:small">
+                            Email: @faculty.email
+                    </h3>
+                    }
+                    @if (faculty.twitter != "")
+                    {
+                        <h3 style="font-size:small">
+                            Twitter: @faculty.twitter
+                        </h3>
+                    }
+                    @if (faculty.facebook != "")
+                    {
+                        <h3 style="font-size:small">
+                            Facebook: @faculty.facebook
+                        </h3>
+                    }
+                </div>
+            }
+        </div>
+        <div id="staffAcc">
+            <h2>Staff</h2>
+            <!-- TODO: add staff stuff-->
+            @foreach (var staff in Model.staff)
+            {
+                <div class="person">
+                    <img src="@staff.imagePath" alt="pic" />
+                    <h3 style="font-size:small">
+                        @staff.name
+                    </h3>
+                    <h3 style="font-size:small">
+                        @staff.username
+                    </h3>
+                    @if (staff.tagline != "")
+                    {
+                        <h3 style="font-size:small">
+                            @staff.tagline
+                        </h3>
+                    }
+                    <h3 style="font-size:small">
+                        @staff.title
+                    </h3>
+                    <h3 style="font-size:small">
+                        @staff.interestArea
+                    </h3>
+                    <h3 style="font-size:small">
+                        @staff.office
+                    </h3>
+                    @if (staff.website != "")
+                    {
+                        <h3 style="font-size:small">
+                            Webiste: @staff.website
+                        </h3>
+                    }
+                    @if (staff.phone != "")
+                    {
+                        <h3 style="font-size:small">
+                            Phone: @staff.phone
+                        </h3>
+                    }
+                    @if (staff.email != "")
+                    {
+                        <h3 style="font-size:small">
+                            Email: @staff.email
+                        </h3>
+                    }
+                    @if (staff.twitter != "")
+                    {
+                        <h3 style="font-size:small">
+                            Twitter: @staff.twitter
+                        </h3>
+                    }
+                    @if (staff.facebook != "")
+                    {
+                        <h3 style="font-size:small">
+                            Facebook: @staff.facebook
+                        </h3>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

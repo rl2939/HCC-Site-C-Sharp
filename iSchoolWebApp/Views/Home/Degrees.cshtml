@@ -1,0 +1,168 @@
+﻿@model iSchoolWebApp.Models.DegreesModel
+@{
+    ViewData["Title"] = @Model.pageTitle;
+}
+
+<h1>Degrees</h1>
+<div id="allDegrees" style="display:none">
+    <h2>Undergraduate</h2>
+    <div id="underAcc">
+        @foreach (var undergraduate in Model.undergraduate)
+        {
+            <h3>
+                 @undergraduate.title
+            </h3>
+            <div class="degree">
+                <p>
+                    @undergraduate.degreeName
+                </p>
+                <p>
+                    @undergraduate.description
+                </p>
+                <h4>
+                    Concentrations:
+                </h4>
+                @foreach (var concentration in @undergraduate.concentrations)
+                {
+                    <p style="font-size:small">
+                        @concentration
+                    </p>
+                }
+            </div>
+        }
+    </div>
+    <h2>Graduate</h2>
+    <div id="gradAcc">
+        @foreach (var graduate in Model.graduate)
+        {
+            @if (graduate.title != null)
+            {
+                <h3>
+                    @graduate.title (@graduate.degreeName)
+                </h3>
+            }
+            else
+            {
+                <h3>
+                    @graduate.degreeName
+                </h3>
+            }
+            <div class="degree">
+ 
+                <p>
+                    @graduate.description
+                </p>
+                @if (graduate.concentrations != null)
+                {
+                    <h4>
+                        Concentrations:
+                    </h4>
+                    @foreach (var concentration in @graduate.concentrations)
+                    {
+                        <p style="font-size:small">
+                            @concentration
+                        </p>
+                    }
+                }
+                @if (graduate.availableCertificates != null)
+                {
+                    <p>
+                        Available Certificates:
+                    </p>
+                    @foreach (var certificate in @graduate.availableCertificates)
+                    {
+                        <p style="font-size:small">
+                            @certificate
+                        </p>
+                    }
+                }
+            </div>
+        }
+    </div>
+    <!--
+    <ul>
+        <li><a href="#underDeg">Undergraduate</a></li>
+        <li><a href="#gradDeg">Graduate</a></li>
+    </ul>
+    <div id="underDeg">
+        <h2>Undergraduate</h2>
+        @foreach (var undergraduate in Model.undergraduate)
+        {
+            <div class="degree">
+                <h3>
+                    @undergraduate.title
+                </h3>
+                <p>
+                    @undergraduate.degreeName
+                </p>
+                <p>
+                    @undergraduate.description
+                </p>
+                <h4>
+                    Concentrations:
+                </h4>
+                @foreach (var concentration in @undergraduate.concentrations)
+                {
+                    <p style="font-size:small">
+                        @concentration
+                    </p>
+                }
+            </div>
+        }
+    </div>
+    <div id="gradDeg">
+        <h2>Graduate</h2>
+        @foreach (var graduate in Model.graduate)
+        {
+            <div class="degree">
+                @if (graduate.title != null)
+                {
+                    <h3>
+                        @graduate.title
+                    </h3>
+                    <p>
+                        @graduate.degreeName
+                    </p>
+                }
+                else
+                {
+                    <h3>
+                        @graduate.degreeName
+                    </h3>
+                }
+                <p>
+                    @graduate.description
+                </p>
+                @if (graduate.concentrations != null)
+                {
+                    <h4>
+                        Concentrations:
+                    </h4>
+                    @foreach (var concentration in @graduate.concentrations)
+                    {
+                        <p style="font-size:small">
+                            @concentration
+                        </p>
+                    }
+                }
+                @if (graduate.availableCertificates != null)
+                {
+                    <p>
+                        Available Certificates:
+                    </p>
+                    @foreach (var certificate in @graduate.availableCertificates)
+                    {
+                        <p style="font-size:small">
+                            @certificate
+                        </p>
+                    }
+                }
+            </div>
+        }
+    </div>
+    -->
+
+</div>
+
+
+

@@ -1,0 +1,111 @@
+﻿@*
+    For more information on enabling MVC for empty projects,
+    visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model dynamic
+@{
+    ViewData["Title"] = Model.pageTitle;
+    List<string> courseList2 = new List<string>();
+    Dictionary<string, CourseModel> courseList = new Dictionary<string, CourseModel>();
+
+    @foreach (var course in Model.Course)
+    {
+        courseList.Add(course.courseID, new CourseModel
+            {
+                courseID = course.courseID,
+                title = course.title,
+                description = course.description
+            }
+        );
+    }
+
+    /*
+    Console.WriteLine("-----------------------------------------------------");
+        Console.WriteLine(Model);
+        Console.WriteLine(Model.Minors);
+        Console.WriteLine(Model.Minors.UgMinors);
+            Console.WriteLine(Model.Course);
+            Console.WriteLine("-----------------------------------------------------");
+
+
+    @foreach (var minor in Model.Minors.UgMinors)
+    {
+    @foreach (var course in minor.courses)
+    {
+    courseList2.Add(course);
+    }
+    }
+    Console.WriteLine("-----------------------------------------------------");
+    Console.WriteLine("ALL OF THE COURSES:");
+    courseList2.ForEach(p => Console.WriteLine(p));
+    Console.WriteLine("-----------------------------------------------------");
+    */
+
+    /*
+    @foreach (var item in courseList)
+    {
+    Console.WriteLine($@"{item.Key} has:");
+    Console.WriteLine($@"ID: {item.Value.courseID}");
+    Console.WriteLine($@"Title: {item.Value.title}");
+    Console.WriteLine($@"Description: { item.Value.description}.");
+    Console.WriteLine();
+    }
+    */
+}
+<script>
+    // Convert the C# dictionary to a js one
+    var listOfCourses = @Html.Raw(Json.Serialize(courseList));
+
+    //console.log(listOfCourses);
+
+    function showCourse(course) {
+        // console.log testing
+        console.log(course);
+        console.log(listOfCourses[course]);
+        console.log(listOfCourses[course].courseID);
+        console.log(listOfCourses[course].title);
+        console.log(listOfCourses[course].description);
+        // Erase Previous contents, if any
+        const popupBox = document.getElementById("popup");
+        popupBox.textContent = '';
+        // Add Title
+        let popupTitle = document.createElement('h2');
+        let popupTitleText = document.createTextNode(listOfCourses[course].title);
+        popupTitle.appendChild(popupTitleText);
+        // Add CourseID
+        let popupCourseID = document.createElement('p');
+        let popupCourseIDText = document.createTextNode(listOfCourses[course].courseID);
+        popupCourseID.appendChild(popupCourseIDText);
+        // Add Description
+        let popupDesc = document.createElement('p');
+        let popupDescText = document.createTextNode(listOfCourses[course].description);
+        popupDesc.appendChild(popupDescText);
+        // Append everything together
+        popupBox.appendChild(popupTitle);
+        popupBox.appendChild(popupCourseID);
+        popupBox.appendChild(popupDesc);
+    }
+</script>
+
+<h1> Minors </h1>
+<div id="minors" style="display:none">
+    @foreach (var minor in Model.Minors.UgMinors)
+    {
+        <h2>@minor.title</h2>
+        <div>
+            <p>@minor.name</p>
+            <p>@minor.description</p>
+            <p class="center-text">Courses:</p>
+            <span class="center-flex">
+            @foreach (var course in minor.courses)
+            {
+                <a href="#popup" class="course" onclick='showCourse("@course")'>@course</a>
+            }
+            </span>
+        </div>
+    }
+</div>
+
+<div id="popup" class="class-popup mfp-hide"></div>
+
+

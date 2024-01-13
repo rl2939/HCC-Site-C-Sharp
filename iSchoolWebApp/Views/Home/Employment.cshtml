@@ -1,0 +1,126 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model iSchoolWebApp.Models.EmploymentModel
+@{
+    ViewData["Title"] = Model.pageTitle;
+}
+
+<h1>Employment</h1>
+
+<div id="employment" style="display:none">
+    <div id="introduction" class="card">
+        <h2>@Model.introduction.title</h2>
+        <div class ="center-flex">
+            @foreach (var content in Model.introduction.content)
+            {
+                <div>
+                    <h3>@content.title</h3>
+                    <p>@content.description</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="degree-statistics" class="card">
+        <h2>@Model.degreeStatistics.title</h2>
+        <div class="center-flex center-text">
+            @foreach (var statistics in Model.degreeStatistics.statistics)
+            {
+                <div>
+                    <h3>@statistics.value</h3>
+                    <p>@statistics.description</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="employers" class="card">
+        <h2>@Model.employers.title</h2>
+        <div class="center-flex">
+            @foreach (var name in Model.employers.employerNames)
+            {
+                <div>
+                    <p>@name</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="careers" class="card">
+        <h2>@Model.careers.title</h2>
+        <div class="center-flex">
+            @foreach (var name in Model.careers.careerNames)
+            {
+                <div>
+                    <p>@name</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="coopTable" class="card">
+        <h2>@Model.coopTable.title</h2>
+        <table id="coopTableTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Term</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var info in Model.coopTable.coopInformation)
+                {
+                    <tr>
+                        <td>@info.employer</td>
+                        <td>@info.degree</td>
+                        <td>@info.city</td>
+                        <td>@info.term</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Term</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="employmentTable" class="card">
+        <h2>@Model.employmentTable.title</h2>
+        <table id="employmentTableTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var info in Model.employmentTable.professionalEmploymentInformation)
+                {
+                    <tr>
+                        <td>@info.employer</td>
+                        <td>@info.degree</td>
+                        <td>@info.city</td>
+                        <td>@info.title</td>
+                        <td>@info.startDate</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
